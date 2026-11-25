@@ -11,7 +11,7 @@
 
 *Kazakh-German University (DKU), Almaty — Mechatronics Engineering Project (2026)*
 
-> **[Watch Demo Video](#)** · **[Full Technical Report (EN)](docs/Technical%20Report%20%E2%80%94%20WQR.pdf)** · **[Технический отчёт (RU)](docs/%D0%A2%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BE%D1%82%D1%87%D0%B5%D1%82%20%E2%80%94%20WQR.pdf)** · **[Portfolio Brief (RU)](docs/%D0%9F%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE-%D0%B1%D1%80%D0%B8%D1%84%20%E2%80%94%20WQR.pdf)**
+> **[Full Technical Report (EN)](docs/Technical%20Report%20%E2%80%94%20WQR.pdf)** · **[Технический отчёт (RU)](docs/%D0%A2%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BE%D1%82%D1%87%D0%B5%D1%82%20%E2%80%94%20WQR.pdf)** · **[Portfolio Brief (RU)](docs/%D0%9F%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE-%D0%B1%D1%80%D0%B8%D1%84%20%E2%80%94%20WQR.pdf)**
 
 ![WQR Virtual Test Course in Gazebo Classic](docs/images/01_gazebo_course.png)
 
