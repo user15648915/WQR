@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="leg" params="prefix parent x_reflect y_reflect">
+    <joint name="${prefix}_hip_joint" type="revolute">
+      <parent link="${parent}"/><child link="${prefix}_hip_link"/>
+      <origin xyz="${x_reflect * 0.25} ${y_reflect * 0.15} 0.0" rpy="0 0 0"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-1.25" upper="1.25" effort="220.0" velocity="12.0"/>
+      <dynamics damping="3.0" friction="0.0"/>
+    </joint>
+    <link name="${prefix}_hip_link">
+      <visual>
+        <origin xyz="0 ${y_reflect * 0.02} 0" rpy="1.5708 0 0"/>
+        <geometry><cylinder length="0.07" radius="0.042"/></geometry>
+      </visual>
+      <inertial><mass value="0.8"/><inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/></inertial>
+    </link>
+    <gazebo reference="${prefix}_hip_link"><material>Gazebo/Grey</material></gazebo>
+
+    <joint name="${prefix}_thigh_joint" type="revolute">
+      <parent link="${prefix}_hip_link"/><child link="${prefix}_thigh_link"/>
+      <origin xyz="0 ${y_reflect * 0.05} 0.0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="-2.20" upper="2.20" effort="220.0" velocity="12.0"/>
+      <dynamics damping="3.0" friction="0.0"/>
+    </joint>
+    <link name="${prefix}_thigh_link">
+      <visual>
+        <origin xyz="0 0 -0.1" rpy="0 0 0"/>
+        <geometry><box size="0.055 0.042 0.21"/></geometry>
+      </visual>
+      <visual>
+        <origin xyz="0 0 -0.2" rpy="1.5708 0 0"/>
+        <geometry><cylinder length="0.048" radius="0.032"/></geometry>
+      </visual>
+      <inertial><origin xyz="0 0 -0.1" rpy="0 0 0"/><mass value="1.2"/><inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/></inertial>
+    </link>
+    <gazebo reference="${prefix}_thigh_link"><material>Gazebo/Blue</material></gazebo>
+
+    <joint name="${prefix}_shank_joint" type="revolute">
+      <parent link="${prefix}_thigh_link"/><child link="${prefix}_shank_link"/>
+      <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="-2.45" upper="0.40" effort="220.0" velocity="12.0"/>
+      <dynamics damping="3.0" friction="0.0"/>
+    </joint>
+    <link name="${prefix}_shank_link">
+      <visual>
+        <origin xyz="0.02 0 -0.05" rpy="0 -0.35 0"/>
+        <geometry><cylinder length="0.12" radius="0.018"/></geometry>
+      </visual>
+      <visual>
+        <origin xyz="0.02 0 -0.15" rpy="0 0.35 0"/>
+        <geometry><cylinder length="0.12" radius="0.016"/></geometry>
+      </visual>
+      <inertial><origin xyz="0 0 -0.1" rpy="0 0 0"/><mass value="0.8"/><inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/></inertial>
+    </link>
+    <gazebo reference="${prefix}_shank_link"><material>Gazebo/Black</material></gazebo>
+
+    <joint name="${prefix}_wheel_joint" type="continuous">
+      <parent link="${prefix}_shank_link"/><child link="${prefix}_wheel_link"/>
+      <origin xyz="0 0 -0.2" rpy="1.5708 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="16.0" velocity="22.0"/>
+      <dynamics damping="0.4" friction="0.0"/>
+    </joint>
+    <link name="${prefix}_wheel_link">
+      <visual><geometry><cylinder length="0.04" radius="0.06"/></geometry></visual>
+      <collision><geometry><sphere radius="0.06"/></geometry></collision>
+      <inertial><mass value="0.6"/><inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/></inertial>
+    </link>
+    <gazebo reference="${prefix}_wheel_link">
+      <material>Gazebo/FlatBlack</material>
+      <mu1>0.28</mu1><mu2>1.15</mu2><fdir1>0 0 1</fdir1>
+      <kp>1000000.0</kp><kd>10.0</kd>
+      <minDepth>0.001</minDepth><maxVel>0.01</maxVel>
+    </gazebo>
+  </xacro:macro>
+</robot>
